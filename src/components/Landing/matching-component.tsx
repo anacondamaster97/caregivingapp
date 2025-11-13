@@ -275,8 +275,8 @@ export default function MatchingComponent() {
   ];
 
   return (
-    <div className="bg-gradient-to-br max-h-screen max-w-screen">
-      <div className="relative top-8 lg:top-16 px-4 lg:px-0">
+    <div className="bg-gradient-to-br max-h-screen max-w-screen relative">
+      <div className="relative px-4 lg:px-0">
         <h2 className="text-3xl lg:text-5xl font-light text-gray-900 bg-clip-text text-center mb-4 lg:mb-8">
           Job Opportunity Matching
         </h2>
