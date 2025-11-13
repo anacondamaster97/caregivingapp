@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { NavbarHome } from '@/components/navbar';
@@ -19,7 +19,6 @@ import {
   Mail,
   Phone
 } from 'lucide-react';
-
 import { useRouter } from 'next/navigation';
 import MatchingComponent from '@/components/Landing/matching-component';
 import HowItWorks from '@/components/Landing/how-it-works';

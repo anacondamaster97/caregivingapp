@@ -3,6 +3,16 @@
 import React from 'react';
 import { CheckCircle, Sparkles, ChevronDown, ChevronUp } from 'lucide-react';
 
+interface CaregiverCard {
+  name: string;
+  image: string;
+  match: number;
+  matchColor: string;
+  rate: string;
+  tags: { text: string; color: string }[];
+  description: string;
+}
+
 export default function MatchingComponent() {
   const NUM_ARROWS = 32;
   const [isProfileExpanded, setIsProfileExpanded] = React.useState(false);
@@ -148,7 +158,7 @@ export default function MatchingComponent() {
     tags, 
     description,
     matchColor
-  }: any) => {
+  }: CaregiverCard) => {
     return (
       <div className="group rounded-2xl p-4 lg:p-6 border border-gray-100 hover:border-pink-200 transition-all duration-500 hover:shadow-lg hover:shadow-pink-100/50 relative overflow-hidden mb-4 lg:mb-12 bg-white lg:ml-12">
         <div className="absolute inset-0 bg-gradient-to-br from-pink-50/0 via-purple-50/0 to-pink-50/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

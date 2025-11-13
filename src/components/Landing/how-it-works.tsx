@@ -1,7 +1,6 @@
 'use client';
 
-import { HeartHandshake, Users } from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Briefcase, Award } from 'lucide-react';
 import AnimationWork from './animation-work';

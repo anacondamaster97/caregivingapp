@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, MessageCircle, Sparkles, Users, Building2, Heart, CheckCircle, ArrowRight, User } from 'lucide-react';
+import { MessageCircle, Sparkles, Users, Building2, Heart, CheckCircle, ArrowRight, User } from 'lucide-react';
 
 const CaregiverOnboarding = () => {
   const [currentStep, setCurrentStep] = useState(0);
