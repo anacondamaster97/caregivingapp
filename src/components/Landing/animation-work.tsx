@@ -13,7 +13,7 @@ const CaregiverOnboarding = () => {
       title: "Share Your Profile",
       description: "Tell us about your experience, certifications, availability, and what kind of work you're looking for via phone or chat. It's like talking to a supportive career advisor.",
       icon: MessageCircle,
-      color: "pink",
+      color: "primary", // Use theme color name
       animation: "profile"
     },
     {
@@ -21,15 +21,15 @@ const CaregiverOnboarding = () => {
       title: "Get Matched",
       description: "Our AI analyzes opportunities from care agencies, families, and senior living facilities to find positions that match your skills, preferences, and schedule.",
       icon: Sparkles,
-      color: "purple",
+      color: "primary", // Use theme color name
       animation: "matching"
     },
     {
       number: 3,
-      title: "Connect & Apply",
-      description: "Review job details, compare opportunities side-by-side, and connect directly with employers when you find the right fit.",
+      title: "Apply once to 100+ employers",
+      description: "Apply and we'll find the best opportunities for you based on your profile.",
       icon: CheckCircle,
-      color: "pink",
+      color: "primary", // Use theme color name
       animation: "connect"
     }
   ];
@@ -67,8 +67,9 @@ const CaregiverOnboarding = () => {
           transition={{ duration: 0.5 }}
           className="relative z-10"
         >
-          <div className="w-16 h-16 sm:w-24 sm:h-24 bg-pink-500 rounded-full flex items-center justify-center shadow-xl">
-            <User className="w-8 h-8 sm:w-12 sm:h-12 text-white" />
+          {/* USE SEMANTIC COLORS */}
+          <div className="w-16 h-16 sm:w-24 sm:h-24 bg-primary rounded-full flex items-center justify-center shadow-xl">
+            <User className="w-8 h-8 sm:w-12 sm:h-12 text-primary-foreground" />
           </div>
         </motion.div>
 
@@ -94,7 +95,8 @@ const CaregiverOnboarding = () => {
               repeatType: "reverse",
               repeatDelay: 2
             }}
-            className="absolute w-10 h-10 sm:w-16 sm:h-16 bg-white rounded-xl shadow-lg flex items-center justify-center text-lg sm:text-2xl"
+            // USE SEMANTIC COLORS
+            className="absolute w-10 h-10 sm:w-16 sm:h-16 bg-card rounded-xl shadow-lg flex items-center justify-center text-lg sm:text-2xl"
           >
             {item.icon}
           </motion.div>
@@ -112,7 +114,8 @@ const CaregiverOnboarding = () => {
               repeat: Infinity,
               ease: "easeOut"
             }}
-            className="absolute w-16 h-16 sm:w-24 sm:h-24 border-2 border-pink-300 rounded-full"
+            // USE SEMANTIC COLORS (e.g., primary with opacity)
+            className="absolute w-16 h-16 sm:w-24 sm:h-24 border-2 border-primary/30 rounded-full"
           />
         ))}
       </div>
@@ -158,29 +161,32 @@ const CaregiverOnboarding = () => {
           }}
           className="relative z-10"
         >
-          <div className="w-16 h-16 sm:w-24 sm:h-24 bg-purple-500 rounded-2xl flex items-center justify-center shadow-xl">
-            <User className="w-8 h-8 sm:w-12 sm:h-12 text-white" />
+          {/* USE SEMANTIC COLORS */}
+          <div className="w-16 h-16 sm:w-24 sm:h-24 bg-primary rounded-2xl flex items-center justify-center shadow-xl">
+            <User className="w-8 h-8 sm:w-12 sm:h-12 text-primary-foreground" />
           </div>
         </motion.div>
 
         {/* Opportunity cards flying around */}
         {[
-          { icon: Building2, color: "bg-pink-500", delay: 0, side: "left" },
-          { icon: Users, color: "bg-purple-500", delay: 0.3, side: "right" },
-          { icon: Heart, color: "bg-pink-500", delay: 0.6, side: "left" }
+          // Using accent and primary for variety
+          { icon: Building2, color: "bg-accent", delay: 0 },
+          { icon: Users, color: "bg-primary", delay: 0.3 },
+          { icon: Heart, color: "bg-accent", delay: 0.6 }
         ].map((item, index) => {
           const Icon = item.icon;
+          const side = index % 2 === 0 ? "left" : "right";
           return (
             <motion.div
               key={index}
               initial={{ 
-                x: item.side === "left" ? -animValues.startX : animValues.startX, 
+                x: side === "left" ? -animValues.startX : animValues.startX, 
                 y: -animValues.startY + index * animValues.startY,
                 opacity: 0,
                 scale: 0.5
               }}
               animate={{ 
-                x: item.side === "left" ? -animValues.endX : animValues.endX,
+                x: side === "left" ? -animValues.endX : animValues.endX,
                 y: -animValues.endY + index * animValues.endY,
                 opacity: [0, 1, 1, 0],
                 scale: [0.5, 1, 1, 0.5]
@@ -191,9 +197,10 @@ const CaregiverOnboarding = () => {
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
+              // USE SEMANTIC COLORS
               className={`absolute w-10 h-10 sm:w-14 sm:h-14 ${item.color} rounded-lg shadow-lg flex items-center justify-center`}
             >
-              <Icon className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
+              <Icon className="w-5 h-5 sm:w-7 sm:h-7 text-primary-foreground" />
             </motion.div>
           );
         })}
@@ -207,7 +214,7 @@ const CaregiverOnboarding = () => {
               y1="50%"
               x2={i === 1 ? "70%" : "30%"}
               y2={`${30 + i * 20}%`}
-              stroke="#e879f9"
+              stroke="oklch(var(--primary))" // Use CSS var directly
               strokeWidth="2"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={{ pathLength: 1, opacity: [0, 0.6, 0] }}
@@ -248,9 +255,10 @@ const CaregiverOnboarding = () => {
               initial={{ x: -60, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2 + i * 0.2, duration: 0.5 }}
-              className="w-14 h-10 sm:w-20 sm:h-16 bg-white rounded-lg shadow-md border-2 border-pink-200 flex items-center justify-center"
+              // USE SEMANTIC COLORS
+              className="w-14 h-10 sm:w-20 sm:h-16 bg-card rounded-lg shadow-md border-2 border-primary/20 flex items-center justify-center"
             >
-              <User className="w-5 h-5 sm:w-7 sm:h-7 text-pink-500" />
+              <User className="w-5 h-5 sm:w-7 sm:h-7 text-primary" />
             </motion.div>
           ))}
         </div>
@@ -270,7 +278,7 @@ const CaregiverOnboarding = () => {
               ease: "easeInOut"
             }}
           >
-            <ArrowRight className="w-10 h-10 sm:w-16 sm:h-16 text-pink-500" />
+            <ArrowRight className="w-10 h-10 sm:w-16 sm:h-16 text-primary" />
           </motion.div>
         </motion.div>
 
@@ -282,13 +290,15 @@ const CaregiverOnboarding = () => {
           className="absolute right-2 sm:right-12 top-1/2 -translate-y-1/2"
         >
           <div className="relative">
-            <div className="w-16 h-16 sm:w-24 sm:h-24 bg-pink-500 rounded-2xl flex items-center justify-center shadow-xl">
-              <Building2 className="w-8 h-8 sm:w-12 sm:h-12 text-white" />
+            {/* USE SEMANTIC COLORS */}
+            <div className="w-16 h-16 sm:w-24 sm:h-24 bg-primary rounded-2xl flex items-center justify-center shadow-xl">
+              <Building2 className="w-8 h-8 sm:w-12 sm:h-12 text-primary-foreground" />
             </div>
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 1.3, duration: 0.3 }}
+              // Use a destructive/success color. Green-500 is fine, or you can add a 'success' var.
               className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-6 h-6 sm:w-8 sm:h-8 bg-green-500 rounded-full flex items-center justify-center shadow-lg"
             >
               <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" />
@@ -319,7 +329,8 @@ const CaregiverOnboarding = () => {
             }}
             className="absolute w-2 h-2 rounded-full"
             style={{ 
-              backgroundColor: i % 2 === 0 ? '#ec4899' : '#a855f7',
+              // Use theme colors
+              backgroundColor: i % 2 === 0 ? 'oklch(var(--primary))' : 'oklch(var(--accent))',
               left: '50%',
               top: '50%'
             }}
@@ -345,19 +356,21 @@ const CaregiverOnboarding = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 md:p-10"
+            // USE SEMANTIC COLORS
+            className="bg-card rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 md:p-10"
           >
             {/* Step indicator */}
             <div className="flex items-center justify-center gap-2 mb-6 sm:mb-8">
               {steps.map((s, index) => (
                 <div
                   key={index}
+                  // USE SEMANTIC COLORS
                   className={`h-2 rounded-full transition-all duration-300 ${
                     index === currentStep
-                      ? 'w-12 sm:w-16 bg-pink-500'
+                      ? 'w-12 sm:w-16 bg-primary'
                       : index < currentStep
-                      ? 'w-8 bg-pink-300'
-                      : 'w-8 bg-gray-200'
+                      ? 'w-8 bg-primary/50'
+                      : 'w-8 bg-muted'
                   }`}
                 />
               ))}
@@ -375,8 +388,9 @@ const CaregiverOnboarding = () => {
               transition={{ delay: 0.2 }}
               className="flex justify-center mb-4"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-pink-500 rounded-full flex items-center justify-center shadow-lg">
-                <span className="text-white text-xl sm:text-2xl font-light">{step.number}</span>
+              {/* USE SEMANTIC COLORS */}
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary rounded-full flex items-center justify-center shadow-lg">
+                <span className="text-primary-foreground text-xl sm:text-2xl font-normal">{step.number}</span>
               </div>
             </motion.div>
 
@@ -387,10 +401,11 @@ const CaregiverOnboarding = () => {
               transition={{ delay: 0.3 }}
               className="text-center"
             >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 mb-3 sm:mb-4">
+              {/* USE SEMANTIC COLORS & FONT FIX */}
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-foreground mb-3 sm:mb-4">
                 {step.title}
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto px-2">
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto px-2">
                 {step.description}
               </p>
             </motion.div>
@@ -403,7 +418,8 @@ const CaregiverOnboarding = () => {
                 transition={{ delay: 0.5 }}
                 className="mt-6 sm:mt-8 flex justify-center"
               >
-                <a href="/questions" className="bg-pink-500 hover:bg-pink-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-light text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-2">
+                {/* USE SEMANTIC COLORS & FONT FIX */}
+                <a href="/questions" className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-full font-normal text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-2">
                   Get Started
                   <ArrowRight className="w-5 h-5" />
                 </a>
@@ -416,8 +432,9 @@ const CaregiverOnboarding = () => {
                 <button
                   key={index}
                   onClick={() => setCurrentStep(index)}
+                  // USE SEMANTIC COLORS
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentStep ? 'bg-pink-500 w-6' : 'bg-gray-300'
+                    index === currentStep ? 'bg-primary w-6' : 'bg-muted'
                   }`}
                   aria-label={`Go to step ${index + 1}`}
                 />

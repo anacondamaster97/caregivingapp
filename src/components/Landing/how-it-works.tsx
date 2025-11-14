@@ -2,17 +2,20 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, Briefcase, Award } from 'lucide-react';
+import { Check, Briefcase, Award, HeartHandshake, Users } from 'lucide-react'; // Added missing imports for commented code
 import AnimationWork from './animation-work';
+
+// Assuming TypingIndicator is imported if the chat is used
+// import TypingIndicator from './TypingIndicator'; 
 
 const HowItWorks = () => {
   
 
   return (
-    <section id="how-it-works" className="py-18 md:py-24 lg:py-32 px-4 md:px-8 bg-gradient-to-b from-pink-200/30 to-white">
+    <section id="how-it-works" className="py-18 md:py-24 lg:py-32 px-4 md:px-8 bg-gradient-to-b from-primary/10 to-background">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 md:mb-20 lg:mb-24">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-4 md:mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-foreground mb-4 md:mb-6 leading-tight">
             How it works
           </h2>
         </div>
@@ -21,39 +24,40 @@ const HowItWorks = () => {
           {/* Left side - Text content */}
           <div className="space-y-8 md:space-y-12 lg:space-y-16">
             <div>
-              <h3 className="text-xl md:text-2xl lg:text-3xl font-light text-gray-900 mb-3 md:mb-4 lg:mb-6">
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-normal text-foreground mb-3 md:mb-4 lg:mb-6">
                 1. Share Your Profile
               </h3>
-              <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+              <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
                 Tell us about your experience, certifications, availability, and 
                 what kind of work you&apos;re looking for via phone or chat. It&apos;s like talking to a supportive career advisor.
               </p>
             </div>
 
             <div>
-              <h3 className="text-xl md:text-2xl lg:text-3xl font-light text-gray-900 mb-3 md:mb-4 lg:mb-6">
-                2. Get Matched
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-normal text-foreground mb-3 md:mb-4 lg:mb-6">
+                2. Get Matched Quickly
               </h3>
-              <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+              <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
                 Our AI analyzes opportunities from care agencies, families, and senior living facilities 
                 to find positions that match your skills, preferences, and schedule.
               </p>
             </div>
 
             <div>
-              <h3 className="text-xl md:text-2xl lg:text-3xl font-light text-gray-900 mb-3 md:mb-4 lg:mb-6">
-                3. Connect & Apply
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-normal text-foreground mb-3 md:mb-4 lg:mb-6">
+                3. Apply once to all agencies on our platform
               </h3>
-              <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                Review job details, compare opportunities side-by-side, and connect
-                directly with employers when you find the right fit.
+              <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+                Apply and we'll find the best opportunities for you based on your profile. No need to apply to multiple employers.
               </p>
             </div>
           </div>
 
           {/* Right side - Animated Chat Interface */}
           <div className="relative top-8 lg:top-16 justify-center items-center w-[280px] lg:w-full mx-auto pb-16">
-            {/* <div className="bg-gradient-to-br from-pink-50 to-white rounded-2xl md:rounded-3xl p-4 md:p-6 lg:p-8 shadow-xl border border-pink-100">
+            {/* This block is also updated to use your theme-aware classes.
+              
+              <div className="bg-gradient-to-br from-primary/5 to-card rounded-2xl md:rounded-3xl p-4 md:p-6 lg:p-8 shadow-xl border border-primary/20">
               <div 
                 ref={chatContainerRef}
                 className="space-y-4 md:space-y-6 overflow-hidden"
@@ -70,13 +74,13 @@ const HowItWorks = () => {
                         className="flex gap-2 md:gap-3 animate-in fade-in slide-in-from-left-5 duration-500"
                       >
                         <div className="shrink-0">
-                          <div className="w-6 h-6 md:w-8 md:h-8 bg-pink-200 rounded-full justify-center items-center flex font-light text-gray-600">
-                            <HeartHandshake className="w-4 h-4 text-pink-600" />
+                          <div className="w-6 h-6 md:w-8 md:h-8 bg-primary/30 rounded-full justify-center items-center flex font-normal text-muted-foreground">
+                            <HeartHandshake className="w-4 h-4 text-primary" />
                           </div>
                         </div>
                         <div className="flex-1">
-                          <div className="bg-pink-50/80 rounded-2xl rounded-tl-sm p-3 md:p-4 lg:p-5">
-                            <p className="text-gray-800 text-sm md:text-base leading-relaxed">
+                          <div className="bg-muted rounded-2xl rounded-tl-sm p-3 md:p-4 lg:p-5">
+                            <p className="text-foreground text-sm md:text-base leading-relaxed">
                               {message.text}
                             </p>
                           </div>
@@ -90,15 +94,15 @@ const HowItWorks = () => {
                         className="flex gap-2 md:gap-3 justify-end animate-in fade-in slide-in-from-right-5 duration-500"
                       >
                         <div className="flex-1 flex justify-end">
-                          <div className="bg-gradient-to-br from-pink-400 to-pink-500 rounded-2xl rounded-tr-sm p-3 md:p-4 lg:p-5 max-w-md shadow-md">
-                            <p className="text-white text-sm md:text-base leading-relaxed">
+                          <div className="bg-primary rounded-2xl rounded-tr-sm p-3 md:p-4 lg:p-5 max-w-md shadow-md">
+                            <p className="text-primary-foreground text-sm md:text-base leading-relaxed">
                               {message.text}
                             </p>
                           </div>
                         </div>
                         <div className="shrink-0">
-                          <div className="w-6 h-6 md:w-8 md:h-8 bg-gray-300 rounded-full flex items-center justify-center">
-                            <Users className="w-3 h-3 md:w-4 md:h-4 text-gray-600" />
+                          <div className="w-6 h-6 md:w-8 md:h-8 bg-muted rounded-full flex items-center justify-center">
+                            <Users className="w-3 h-3 md:w-4 md:h-4 text-muted-foreground" />
                           </div>
                         </div>
                       </div>
@@ -112,7 +116,8 @@ const HowItWorks = () => {
                   </div>
                 )}
               </div>
-            </div> */}
+            </div> 
+            */}
             {/* <PhoneCallAnimation /> */}
             <AnimationWork />
           </div>

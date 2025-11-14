@@ -85,7 +85,7 @@ export default function MatchingComponent() {
       >
         <defs>
           <linearGradient id={`shimmer-${id}`} x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(236, 72, 153, 0)">
+            <stop offset="0%" stopColor="currentColor" className="text-primary/0">
               <animate
                 attributeName="stop-opacity"
                 values="0;0.3;0"
@@ -94,7 +94,7 @@ export default function MatchingComponent() {
                 begin={`${delay}s`}
               />
             </stop>
-            <stop offset="50%" stopColor="rgba(236, 72, 153, 0.9)">
+            <stop offset="50%" stopColor="currentColor" className="text-primary">
               <animate
                 attributeName="stop-opacity"
                 values="0.4;1;0.4"
@@ -103,7 +103,7 @@ export default function MatchingComponent() {
                 begin={`${delay}s`}
               />
             </stop>
-            <stop offset="100%" stopColor="rgba(236, 72, 153, 0)">
+            <stop offset="100%" stopColor="currentColor" className="text-primary/0">
               <animate
                 attributeName="stop-opacity"
                 values="0;0.3;0"
@@ -143,8 +143,8 @@ export default function MatchingComponent() {
 
   const InfoCard = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => (
     <div className="relative group">
-      <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500" />
-      <div className="relative bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-3 transition-transform duration-300 group-hover:scale-[1.02]">
+      <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-primary via-chart-3 to-primary opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500" />
+      <div className="relative bg-gradient-to-br from-secondary/40 to-accent/40 rounded-xl p-3 transition-transform duration-300 group-hover:scale-[1.02]">
         {children}
       </div>
     </div>
@@ -160,18 +160,18 @@ export default function MatchingComponent() {
     matchColor
   }: CaregiverCard) => {
     return (
-      <div className="group rounded-2xl p-4 lg:p-6 border border-gray-100 hover:border-pink-200 transition-all duration-500 hover:shadow-lg hover:shadow-pink-100/50 relative overflow-hidden mb-4 lg:mb-12 bg-white lg:ml-12">
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-50/0 via-purple-50/0 to-pink-50/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="group rounded-2xl p-4 lg:p-6 border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-lg hover:shadow-primary/10 relative overflow-hidden mb-4 lg:mb-12 bg-card lg:ml-12">
+        <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 via-accent/0 to-secondary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
         <div className="relative flex flex-col lg:flex-row items-start gap-4 lg:gap-2">
           {/* Mobile: Image and Match Score in Header */}
           <div className="flex items-center justify-between w-full lg:w-auto">
             <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-br from-pink-400 to-purple-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-500" />
+              <div className="absolute -inset-1 bg-gradient-to-br from-primary to-chart-3 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-500" />
               <img
                 src={image}
                 alt={name}
-                className="relative w-16 h-16 lg:w-20 lg:h-20 rounded-full object-cover ring-2 ring-white transition-transform duration-500 group-hover:scale-105"
+                className="relative w-16 h-16 lg:w-20 lg:h-20 rounded-full object-cover ring-2 ring-card transition-transform duration-500 group-hover:scale-105"
               />
             </div>
             
@@ -180,14 +180,14 @@ export default function MatchingComponent() {
               <div className={`text-2xl font-light ${matchColor} mb-1 flex items-center gap-1.5`}>
                 {match}%
               </div>
-              <div className="text-gray-500 text-xs">match</div>
+              <div className="text-muted-foreground text-xs">match</div>
             </div>
           </div>
           
           <div className="flex-1 w-full min-w-0">
             <div className="flex flex-col lg:flex-row items-start justify-between mb-3 gap-3 lg:gap-0">
               <div className="flex flex-col gap-2 w-full lg:w-auto">
-                <h3 className="text-lg lg:text-xl font-light text-gray-900 transition-colors duration-300 group-hover:text-pink-600">
+                <h3 className="text-lg lg:text-xl font-light text-card-foreground transition-colors duration-300 group-hover:text-primary">
                   {name}
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -207,23 +207,23 @@ export default function MatchingComponent() {
                 <div className={`text-xl font-light ${matchColor} mb-1 flex items-center gap-1.5 transition-transform duration-300 group-hover:scale-110 justify-end`}>
                   {match}% match
                 </div>
-                <div className="text-gray-600 text-base font-light">{rate}</div>
-                <div className="text-gray-500 text-xs flex items-center gap-1 pt-1 justify-end">
+                <div className="text-card-foreground text-base font-light">{rate}</div>
+                <div className="text-muted-foreground text-xs flex items-center gap-1 pt-1 justify-end">
                   Background Check
-                  <CheckCircle className="w-3.5 h-3.5 text-emerald-500" />
+                  <CheckCircle className="w-3.5 h-3.5 text-chart-2" />
                 </div>
               </div>
             </div>
             
-            <p className="text-gray-600 text-sm leading-relaxed mb-3 lg:mb-0">
+            <p className="text-muted-foreground text-sm leading-relaxed mb-3 lg:mb-0">
               {description}
             </p>
             
             {/* Mobile Rate & Background Check */}
-            <div className="lg:hidden flex items-center justify-between pt-3 border-t border-gray-100">
-              <div className="text-gray-900 text-lg font-medium">{rate}</div>
-              <div className="text-gray-500 text-xs flex items-center gap-1.5">
-                <CheckCircle className="w-4 h-4 text-emerald-500" />
+            <div className="lg:hidden flex items-center justify-between pt-3 border-t border-border">
+              <div className="text-card-foreground text-lg font-medium">{rate}</div>
+              <div className="text-muted-foreground text-xs flex items-center gap-1.5">
+                <CheckCircle className="w-4 h-4 text-chart-2" />
                 Background Check
               </div>
             </div>
@@ -238,12 +238,12 @@ export default function MatchingComponent() {
       name: "Sunrise Memory Care Center",
       image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=150&h=150&fit=crop",
       match: 95,
-      matchColor: "text-emerald-500",
+      matchColor: "text-green-500",
       rate: "$32-38/hr",
       tags: [
-        { text: 'Memory Care Specialist', color: 'bg-purple-100 text-purple-700' },
-        { text: 'Full Benefits', color: 'bg-blue-100 text-blue-700' },
-        { text: 'Career Growth', color: 'bg-emerald-100 text-emerald-700' },
+        { text: 'Memory Care Specialist', color: 'bg-chart-4 text-black ' },
+        { text: 'Full Benefits', color: 'bg-chart-3 text-black ' },
+        { text: 'Career Growth', color: 'bg-chart-2 text-black ' },
       ],
       description: "Perfect match for your memory care expertise! This facility offers specialized dementia training, competitive pay, and excellent benefits. Located near the Blue Line station."
     },
@@ -251,12 +251,12 @@ export default function MatchingComponent() {
       name: "ComfortCare Home Services",
       image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=150&h=150&fit=crop",
       match: 88,
-      matchColor: "text-amber-500",
+      matchColor: "text-green-500",
       rate: "$30-35/hr",
       tags: [
-        { text: 'Flexible Schedule', color: 'bg-indigo-100 text-indigo-700' },
-        { text: 'Bilingual Bonus', color: 'bg-orange-100 text-orange-700' },
-        { text: 'Home Care', color: 'bg-pink-100 text-pink-700' },
+        { text: 'Flexible Schedule', color: 'bg-chart-5/20 text-chart-5' },
+        { text: 'Bilingual Bonus', color: 'bg-primary/20 text-primary' },
+        { text: 'Home Care', color: 'bg-accent/40 text-accent-foreground' },
       ],
       description: "A growing home care agency seeking bilingual CNAs. Offers flexible hours, mileage reimbursement, and pays premium rates for Spanish-speaking caregivers."
     },
@@ -264,23 +264,23 @@ export default function MatchingComponent() {
       name: "Golden Years Assisted Living",
       image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=150&h=150&fit=crop",
       match: 72,
-      matchColor: "text-amber-500",
+      matchColor: "text-yellow-500",
       rate: "$28-32/hr",
       tags: [
-        { text: 'Team Environment', color: 'bg-teal-100 text-teal-700' },
-        { text: 'PTO & Benefits', color: 'bg-violet-100 text-violet-700' },
+        { text: 'Team Environment', color: 'bg-chart-1/20 text-chart-1' },
+        { text: 'PTO & Benefits', color: 'bg-secondary/60 text-secondary-foreground' },
       ],
       description: "Well-established assisted living community with a strong team culture. Offers health benefits, paid time off, and opportunities to work with diverse residents."
     }
   ];
 
   return (
-    <div className="bg-gradient-to-br max-h-screen max-w-screen relative">
+    <div className="bg-gradient-to-br max-h-screen max-w-6xl relative items-center justify-center mx-auto">
       <div className="relative px-4 lg:px-0">
-        <h2 className="text-3xl lg:text-5xl font-light text-gray-900 bg-clip-text text-center mb-4 lg:mb-8">
+        <h2 className="text-3xl lg:text-5xl font-light text-foreground bg-clip-text text-center mb-4 lg:mb-8">
           Job Opportunity Matching
         </h2>
-        <p className="text-gray-500 text-xs lg:text-sm text-center max-w-2xl mx-auto px-4">
+        <p className="text-muted-foreground text-xs lg:text-sm text-center max-w-2xl mx-auto px-4">
           We match you with the right opportunities based on your experience, skills, and preferences. Our advanced AI analyzes your profile and connects you with employers looking for caregivers like you.
         </p>
       </div>
@@ -292,26 +292,26 @@ export default function MatchingComponent() {
           <div className={`lg:space-y-4 ${isMobile ? 'mb-6' : 'lg:sticky lg:top-8 lg:self-start'}`}>
             {/* Mobile: Collapsible Header */}
             {isMobile && (
-              <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-pink-100 overflow-hidden">
+              <div className="bg-card/95 backdrop-blur-md rounded-2xl shadow-lg border border-border overflow-hidden">
                 <button
                   onClick={() => setIsProfileExpanded(!isProfileExpanded)}
                   className="w-full p-4 flex items-center justify-between"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center">
-                      <Sparkles className="w-5 h-5 text-white" />
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-chart-3 flex items-center justify-center">
+                      <Sparkles className="w-5 h-5 text-primary-foreground" />
                     </div>
                     <div className="text-left">
-                      <h3 className="text-sm font-semibold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+                      <h3 className="text-sm font-semibold bg-gradient-to-r from-primary to-chart-3 bg-clip-text text-transparent">
                         Your Profile
                       </h3>
-                      <p className="text-xs text-gray-500">Sarah Martinez • 5 years exp</p>
+                      <p className="text-xs text-muted-foreground">Sarah Martinez • 5 years exp</p>
                     </div>
                   </div>
                   {isProfileExpanded ? (
-                    <ChevronUp className="w-5 h-5 text-gray-400" />
+                    <ChevronUp className="w-5 h-5 text-muted-foreground" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-gray-400" />
+                    <ChevronDown className="w-5 h-5 text-muted-foreground" />
                   )}
                 </button>
                 
@@ -319,37 +319,37 @@ export default function MatchingComponent() {
                 {isProfileExpanded && (
                   <div className="px-4 pb-4 space-y-3">
                     <div className="grid grid-cols-2 gap-2">
-                      <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-lg p-2.5">
-                        <p className="text-gray-500 text-[10px] uppercase tracking-wide">Desired Pay</p>
-                        <p className="text-gray-900 text-xs font-medium">$30–$40/hr</p>
+                      <div className="bg-gradient-to-br from-secondary/40 to-accent/40 rounded-lg p-2.5">
+                        <p className="text-muted-foreground text-[10px] uppercase tracking-wide">Desired Pay</p>
+                        <p className="text-card-foreground text-xs font-medium">$30–$40/hr</p>
                       </div>
-                      <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-lg p-2.5">
-                        <p className="text-gray-500 text-[10px] uppercase tracking-wide">Availability</p>
-                        <p className="text-gray-900 text-xs font-medium">Full-time</p>
+                      <div className="bg-gradient-to-br from-secondary/40 to-accent/40 rounded-lg p-2.5">
+                        <p className="text-muted-foreground text-[10px] uppercase tracking-wide">Availability</p>
+                        <p className="text-card-foreground text-xs font-medium">Full-time</p>
                       </div>
                     </div>
                     
                     <div className="grid grid-cols-2 gap-2">
                       <div>
-                        <h4 className="text-pink-600 font-semibold text-[10px] mb-1.5">Skills</h4>
+                        <h4 className="text-primary font-semibold text-[10px] mb-1.5">Skills</h4>
                         <div className="space-y-1">
-                          <div className="bg-pink-50 rounded-md p-1.5 text-pink-800 text-[10px]">Memory Care</div>
-                          <div className="bg-pink-50 rounded-md p-1.5 text-pink-800 text-[10px]">CNA Certified</div>
-                          <div className="bg-pink-50 rounded-md p-1.5 text-pink-800 text-[10px]">Bilingual</div>
+                          <div className="bg-primary/10 rounded-md p-1.5 text-primary text-[10px]">Memory Care</div>
+                          <div className="bg-primary/10 rounded-md p-1.5 text-primary text-[10px]">CNA Certified</div>
+                          <div className="bg-primary/10 rounded-md p-1.5 text-primary text-[10px]">Bilingual</div>
                         </div>
                       </div>
                       <div>
-                        <h4 className="text-gray-600 font-semibold text-[10px] mb-1.5">Preferences</h4>
+                        <h4 className="text-muted-foreground font-semibold text-[10px] mb-1.5">Preferences</h4>
                         <div className="space-y-1">
-                          <div className="bg-gray-100 rounded-md p-1.5 text-gray-700 text-[10px]">Near transit</div>
-                          <div className="bg-gray-100 rounded-md p-1.5 text-gray-700 text-[10px]">Benefits</div>
+                          <div className="bg-muted rounded-md p-1.5 text-foreground text-[10px]">Near transit</div>
+                          <div className="bg-muted rounded-md p-1.5 text-foreground text-[10px]">Benefits</div>
                         </div>
                       </div>
                     </div>
                     
-                    <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg p-2.5 border border-amber-200/50">
-                      <p className="text-amber-700 text-[10px] font-semibold mb-1">Looking For</p>
-                      <p className="text-gray-700 text-[10px]">Long-term position with growth opportunities</p>
+                    <div className="bg-gradient-to-br from-chart-5/20 to-chart-1/20 rounded-lg p-2.5 border border-chart-5/30">
+                      <p className="text-chart-5 text-[10px] font-semibold mb-1">Looking For</p>
+                      <p className="text-foreground text-[10px]">Long-term position with growth opportunities</p>
                     </div>
                   </div>
                 )}
@@ -359,30 +359,30 @@ export default function MatchingComponent() {
             {/* Desktop: Full Profile */}
             <div className="hidden lg:block space-y-4">
               <div className="mt-6">
-                <h2 className="text-2xl font-light bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+                <h2 className="text-2xl font-light bg-gradient-to-r from-primary to-chart-3 bg-clip-text text-transparent">
                   Your Profile
                 </h2>
               </div>
 
               <InfoCard>
-                <p className="text-gray-900 text-sm">
-                  <span className="text-gray-500 text-xs uppercase tracking-wide">Name</span>
+                <p className="text-card-foreground text-sm">
+                  <span className="text-muted-foreground text-xs uppercase tracking-wide">Name</span>
                   <br />
                   <span className="font-light text-sm">Sarah Martinez</span>
                 </p>
               </InfoCard>
 
               <InfoCard>
-                <p className="text-gray-900 text-sm">
-                  <span className="text-gray-500 text-xs uppercase tracking-wide">Desired Pay</span>
+                <p className="text-card-foreground text-sm">
+                  <span className="text-muted-foreground text-xs uppercase tracking-wide">Desired Pay</span>
                   <br />
                   <span className="font-light text-sm">$30–$40/hr</span>
                 </p>
               </InfoCard>
 
               <InfoCard>
-                <p className="text-gray-900 text-sm">
-                  <span className="text-gray-500 text-xs uppercase tracking-wide">Availability</span>
+                <p className="text-card-foreground text-sm">
+                  <span className="text-muted-foreground text-xs uppercase tracking-wide">Availability</span>
                   <br />
                   <span className="font-light text-sm">Full-time, flexible shifts</span>
                 </p>
@@ -390,52 +390,52 @@ export default function MatchingComponent() {
 
               <div className="grid grid-cols-2 gap-3 pt-2">
                 <div>
-                  <h3 className="text-pink-600 font-semibold text-xs mb-2">Skills & Certs</h3>
+                  <h3 className="text-primary font-semibold text-xs mb-2">Skills & Certs</h3>
                   <div className="space-y-2">
-                    <div className="bg-pink-50 rounded-lg p-2 flex items-start gap-2">
-                      <span className="text-pink-600 text-sm leading-none">::</span>
-                      <span className="text-pink-800 font-medium text-xs">CNA Certified</span>
+                    <div className="bg-primary/10 rounded-lg p-2 flex items-start gap-2">
+                      <span className="text-primary text-sm leading-none">::</span>
+                      <span className="text-primary font-medium text-xs">CNA Certified</span>
                     </div>
-                    <div className="bg-pink-50 rounded-lg p-2 flex items-start gap-2">
-                      <span className="text-pink-600 text-sm leading-none">::</span>
-                      <span className="text-pink-800 font-medium text-xs">
+                    <div className="bg-primary/10 rounded-lg p-2 flex items-start gap-2">
+                      <span className="text-primary text-sm leading-none">::</span>
+                      <span className="text-primary font-medium text-xs">
                         5 years memory care experience
                       </span>
                     </div>
-                    <div className="bg-pink-50 rounded-lg p-2 flex items-start gap-2">
-                      <span className="text-pink-600 text-sm leading-none">::</span>
-                      <span className="text-pink-800 font-medium text-xs">
+                    <div className="bg-primary/10 rounded-lg p-2 flex items-start gap-2">
+                      <span className="text-primary text-sm leading-none">::</span>
+                      <span className="text-primary font-medium text-xs">
                         Bilingual (English/Spanish)
                       </span>
                     </div>
-                    <div className="bg-pink-50 rounded-lg p-2 flex items-start gap-2">
-                      <span className="text-pink-600 text-sm leading-none">::</span>
-                      <span className="text-pink-800 font-medium text-xs">CPR/First Aid</span>
+                    <div className="bg-primary/10 rounded-lg p-2 flex items-start gap-2">
+                      <span className="text-primary text-sm leading-none">::</span>
+                      <span className="text-primary font-medium text-xs">CPR/First Aid</span>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-gray-600 font-semibold text-xs mb-2">Preferences</h3>
+                  <h3 className="text-muted-foreground font-semibold text-xs mb-2">Preferences</h3>
                   <div className="space-y-2">
-                    <div className="bg-gray-100 rounded-lg p-2 flex items-start gap-2">
-                      <span className="text-gray-500 text-sm leading-none">::</span>
-                      <span className="text-gray-700 font-medium text-xs">Near public transit</span>
+                    <div className="bg-muted rounded-lg p-2 flex items-start gap-2">
+                      <span className="text-muted-foreground text-sm leading-none">::</span>
+                      <span className="text-foreground font-medium text-xs">Near public transit</span>
                     </div>
-                    <div className="bg-gray-100 rounded-lg p-2 flex items-start gap-2">
-                      <span className="text-gray-500 text-sm leading-none">::</span>
-                      <span className="text-gray-700 font-medium text-xs">Benefits package</span>
+                    <div className="bg-muted rounded-lg p-2 flex items-start gap-2">
+                      <span className="text-muted-foreground text-sm leading-none">::</span>
+                      <span className="text-foreground font-medium text-xs">Benefits package</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 px-4 py-3 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl border border-amber-200/50">
-                <h3 className="text-gray-900 font-semibold text-xs mb-2 flex items-center gap-2">
-                  <span className="text-amber-500">⭐</span>
+              <div className="pt-4 px-4 py-3 bg-gradient-to-br from-chart-5/20 to-chart-1/20 rounded-xl border border-chart-5/30">
+                <h3 className="text-card-foreground font-semibold text-xs mb-2 flex items-center gap-2">
+                  <span className="text-chart-5">⭐</span>
                   Looking For
                 </h3>
-                <p className="text-gray-700 text-xs leading-relaxed">
+                <p className="text-foreground text-xs leading-relaxed">
                   Long-term position with opportunities for career growth and advancement
                 </p>
               </div>
@@ -450,8 +450,8 @@ export default function MatchingComponent() {
             {/* Mobile: Section Header */}
             {isMobile && (
               <div className="mb-4">
-                <h3 className="text-xl font-semibold text-gray-900">Your Opportunities</h3>
-                <p className="text-xs text-gray-500 mt-1">Ranked by match score</p>
+                <h3 className="text-xl font-semibold text-foreground">Your Opportunities</h3>
+                <p className="text-xs text-muted-foreground mt-1">Ranked by match score</p>
               </div>
             )}
             
